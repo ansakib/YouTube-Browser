@@ -5,8 +5,7 @@ class App extends React.Component {
   state = {};
   render() {
     return (
-      <div>
-        App
+      <div className="ui container">
         <SearchBar />
       </div>
     );

@@ -5,7 +5,7 @@ import VideoDetail from "./VideoDetail";
 import youtube from "../api/youtube";
 
 class App extends React.Component {
-  state = { videos: [], selectedVido: null };
+  state = { videos: [], selectedVideo: null };
 
   onSearchBarSubmit = async term => {
     const response = await youtube.get("/search", {
@@ -13,12 +13,19 @@ class App extends React.Component {
         q: term,
       },
     });
-    this.setState({ videos: response.data.items });
+    this.setState({
+      videos: response.data.items,
+      selectedVideo: response.data.items[0],
+    });
   };
 
   onVideoSelect = video => {
-    this.setState({ selectedVido: video });
+    this.setState({ selectedVideo: video });
   };
+
+  componentDidMount() {
+    //this.onSearchBarSubmit("Mobile Legends");
+  }
 
   render() {
     return (
@@ -27,7 +34,7 @@ class App extends React.Component {
         <div className="ui grid">
           <div className="ui row">
             <div className="eleven wide column">
-              <VideoDetail video={this.state.selectedVido} />
+              <VideoDetail video={this.state.selectedVideo} />
             </div>
             <div className="five wide column">
               <VideoList

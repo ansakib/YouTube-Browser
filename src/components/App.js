@@ -24,7 +24,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    //this.onSearchBarSubmit("Mobile Legends");
+    this.onSearchBarSubmit("Messi");
   }
 
   render() {
